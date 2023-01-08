@@ -1,60 +1,28 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+* {
+  margin: 0;
+  padding: 0;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+li,
+ul {
+  list-style: none;
 }
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+a {
+  text-decoration: none;
 }
 
+$background-color: hsl(271, 100, 14);
+$primary-light-color: hsl(37, 100, 50);
+$secondary-light-color: hsl(31, 100, 50);
+$tertiary-light-color: hsl(26, 100, 50);
+$primary-dark-color: hsl(273, 68, 59);
+$secondary-dark-color: hsl(270, 73, 35);
+$tertiary-dark-color: hsl(271, 85, 23);
 
-:root {
-  $background-color: hsl(271, 100, 14);
-  $primary-light-color: hsl(37, 100, 50);
-  $secondary-light-color: hsl(31, 100, 50);
-  $primary-dark-color: hsl(273, 68, 59);
-  $secondary-dark-color: hsl(270, 73, 35);
-  
-  font-family: Domine, sans-serif;
+* {
+  font-family: Domine, Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  color: $primary-light-color;
 
   background-color: $background-color;
   font-synthesis: none;
@@ -62,4 +30,221 @@ table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+h1,
+p,
+span {
+  color: $primary-light-color;
+}
+
+.main-section {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  place-items: center;
+}
+
+.text {
+  padding: 16px 0;
+}
+
+.primary-button {
+  padding: 16px;
+  background-color: $primary-light-color;
+  border: 1px solid $secondary-dark-color;
+  border-radius: 4px;
+  transition: 0.3s;
+  font-size: 16px;
+  font-weight: bold;
+  color: $tertiary-dark-color;
+  margin: 16px 0;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $tertiary-light-color;
+  }
+}
+
+.secondary-button {
+  padding: 16px;
+  background-color: $tertiary-dark-color;
+  border: 1px solid $secondary-dark-color;
+  border-radius: 4px;
+  transition: 0.3s;
+  font-size: 16px;
+  font-weight: bold;
+  color: $primary-light-color;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $secondary-dark-color;
+  }
+}
+
+.ghost {
+  animation: float 3s ease-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translate(0, 20px);
+  }
+}
+.shadowFrame {
+  width: 130px;
+  margin-top: 15px;
+}
+.shadow {
+  animation: shrink 3s ease-out infinite;
+  transform-origin: center center;
+  ellipse {
+    transform-origin: center center;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    width: 90%;
+    margin: 0 5%;
+  }
+  50% {
+    width: 60%;
+    margin: 0 18%;
+  }
+  100% {
+    width: 90%;
+    margin: 0 5%;
+  }
+}
+
+$color-primary: #81c2de;
+$color-primary-light: #b4f5ff;
+$color-primary-dark: #4f92ac;
+
+$color-white: #fffbfa;
+
+$color-black: #191308;
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 16px 0;
+
+  transition: all 0.4s ease-out;
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+  }
+}
+
+.social-link {
+  &--linkedin {
+    color: #2d76b0;
+  }
+
+  &--github {
+    color: #000;
+  }
+
+  & .social-svg {
+    width: 4.8rem;
+    height: 4.8rem;
+
+    & .social-group {
+      &__icon {
+        fill: $primary-light-color;
+        transition: all 0.2s;
+      }
+
+      &__inner-circle {
+        fill: transparent;
+        transition: all 0.2s;
+      }
+
+      &__outline {
+        stroke: $primary-light-color;
+        transform-origin: 50% 50%;
+        transition: all 0.2s;
+      }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      cursor: pointer;
+      & .social-group {
+        &__icon {
+          fill: $color-white;
+          transition: all 0.45s;
+        }
+
+        &__inner-circle {
+          fill: currentColor;
+          transition: all 0.45s;
+        }
+
+        &__outline {
+          stroke: currentColor;
+          transform: scale(1.1);
+          transition: all 0.45s;
+        }
+      }
+    }
+  }
+}
+
+.waviy {
+  position: relative;
+}
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(0.2s * var(--i));
+}
+@keyframes flip {
+  0%,
+  80% {
+    transform: rotateY(360deg);
+  }
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+@keyframes text-clip {
+  from {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes outer-left {
+  from {
+    transform: translateX(150%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.cafe,
+.mozart {
+  animation: outer-left 1s 1s cubic-bezier(0.5, 0, 0.1, 1) both;
 }
